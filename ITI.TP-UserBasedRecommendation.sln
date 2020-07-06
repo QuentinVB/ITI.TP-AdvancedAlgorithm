@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITI.TP-UserBasedRecommendation", "ITI.TP-UserBasedRecommendation\ITI.TP-UserBasedRecommendation.csproj", "{C8B6B396-ADD5-4DE0-B6AA-A7A0EC2FBF8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{581FB38A-4143-4D5E-9780-9746E49B9F90}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8B6B396-ADD5-4DE0-B6AA-A7A0EC2FBF8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B6B396-ADD5-4DE0-B6AA-A7A0EC2FBF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B6B396-ADD5-4DE0-B6AA-A7A0EC2FBF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B6B396-ADD5-4DE0-B6AA-A7A0EC2FBF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF5D9C0E-4E41-40C7-929E-5CD6B01AF6D8}
+	EndGlobalSection
+EndGlobal
