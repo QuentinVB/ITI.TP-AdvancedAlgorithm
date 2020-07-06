@@ -2,6 +2,6 @@
 {
     public interface IItem
     {
-        int Score { get; set; }
+        int Id { get; set; }
     }
 }
