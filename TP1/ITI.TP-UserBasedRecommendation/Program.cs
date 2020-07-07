@@ -34,7 +34,13 @@ namespace ITI.TP_UserBasedRecommendation
 
             Console.WriteLine("Loaded !");
 
+            //user input his user id
 
+            //compute recommendation
+
+
+
+            //output movie recommendation
 
 
 
