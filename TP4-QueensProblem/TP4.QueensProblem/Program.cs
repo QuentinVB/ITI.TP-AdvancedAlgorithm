@@ -12,13 +12,14 @@ namespace TP4.QueensProblem
         static void Main(string[] args)
         {
             //build Chess Board
-            bool[,] board = new bool[8,8];
             int width = 8;
             int height = 8;
+            bool[,] board = new bool[width, height];
+
             Random rnd = new Random();
 
             //TODO : group paramters
-            int startPopulation = 20;
+            int startPopulation = 4;
             int bestToKeep = 7;
             int dumbToKeep = 5;
             int aleaToAdd = startPopulation - (bestToKeep + dumbToKeep);
@@ -31,10 +32,10 @@ namespace TP4.QueensProblem
 
 
             //initialize population
-            List<bool[,]> population = new List<bool[,]>();
-            int queenCount = 0;
+            List<bool[,]> population = new List<bool[,]>();       
             for (int i = 0; i < startPopulation; i++)
             {
+                int queenCount = 0;
                 bool[,] tBoard = new bool[width, height];
                 do
                 {
@@ -43,13 +44,23 @@ namespace TP4.QueensProblem
 
                     if (tBoard[x,y])
                     {
-                        continue;
+                        
+                        if (x + 1 >= width)
+                        {
+                            x--;
+                        }
+                        else
+                        {
+                            x++;
+                        }
+                        
                     }
 
                     tBoard[x, y] = true;
+
                     queenCount++;
                 }
-                while (queenCount != 8);
+                while (queenCount < 8);
                 population.Add(tBoard);
                 //Console.WriteLine(population);
 
