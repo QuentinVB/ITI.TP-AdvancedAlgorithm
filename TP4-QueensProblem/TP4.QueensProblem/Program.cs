@@ -26,13 +26,13 @@ namespace TP4.QueensProblem
 
             int maxIterations = 20;
 
-            double mutationRate = 0.10;
+            double mutationRate = 0.80;
             int populationBreed = 50;
 
 
 
             //initialize population
-            List<bool[,]> population = new List<bool[,]>();       
+            List<bool[,]> population = new List<bool[,]>();
             for (int i = 0; i < startPopulation; i++)
             {
                 int queenCount = 0;
@@ -42,9 +42,9 @@ namespace TP4.QueensProblem
                     int x = rnd.Next(0, width);
                     int y = rnd.Next(0, height);
 
-                    if (tBoard[x,y])
+                    if (tBoard[x, y])
                     {
-                        
+
                         if (x + 1 >= width)
                         {
                             x--;
@@ -53,7 +53,7 @@ namespace TP4.QueensProblem
                         {
                             x++;
                         }
-                        
+
                     }
 
                     tBoard[x, y] = true;
@@ -97,7 +97,7 @@ namespace TP4.QueensProblem
                 var parent1 = population[parent1idx];
                 var parent2 = population[parent2idx];
 
-                Console.WriteLine("test");
+                //Console.WriteLine("test");
 
 
                 bool[,] newChild = new bool[width, height];
@@ -105,7 +105,7 @@ namespace TP4.QueensProblem
                 {
                     for (int j = 0; j < parent1.GetLength(1); j++)
                     {
-                        newChild[j, i] = (i>height/2)? parent1[j, i] : parent2[j,i];
+                        newChild[j, i] = (i > height / 2) ? parent1[j, i] : parent2[j, i];
                     }
                 }
 
@@ -135,22 +135,45 @@ namespace TP4.QueensProblem
             //            population.Add(((int)Math.Floor(rnd.NextDouble() * width), (int)Math.Floor(rnd.NextDouble() * height)));
             //        }
 
-            //        //mutate population
-            //        int mutationCount = 0;
+            //mutate population
+            int mutationCount = 0;
 
-            //        for (int i = 0; i < population.Count; i++)
-            //        {
-            //            if (rnd.NextDouble() < mutationRate)
-            //            {
-            //                //mutate item1 
-            //                population[i] = (
-            //                    (rnd.NextDouble() < 0.5) ? (int)Math.Floor(rnd.NextDouble() * width) : population[i].Item1,
-            //                    (rnd.NextDouble() < 0.5) ? (int)Math.Floor(rnd.NextDouble() * width) : population[i].Item2
-            //                    );
-            //                mutationCount++;
-            //            }
-            //        }
-            //        Console.WriteLine($" Muted {mutationCount} individuals with a {mutationRate} rate");
+            for (int i = 0; i < population.Count; i++)
+            {
+                if (rnd.NextDouble() < mutationRate)
+                {
+                    //mutate the Queen position 
+                    var futurMutant = tempPopulation[i];
+                    List<(int, int)> queens = new List<(int, int)>();
+
+                    for (int j = 0; j < futurMutant.GetLength(0); j++)
+                    {
+                        for (int k = 0; k < futurMutant.GetLength(1); k++)
+                        {
+                            if (futurMutant[j, k])
+                            {
+                                queens.Add((j, k));
+                                if (queens.Count == 8) break;
+                            }
+                        }
+                        if (queens.Count == 8) break;
+                    }
+                    var rndQueen = queens[rnd.Next(0, 8)];
+
+                    futurMutant[rndQueen.Item1, rndQueen.Item2] = false;
+                    int x = rnd.Next(0, width);
+                    int y = rnd.Next(0, height);
+
+                    while(futurMutant[x,y])
+                    {
+                        x = rnd.Next(0, width);
+                        y = rnd.Next(0, height);
+                    }
+                    futurMutant[x, y] = true;
+                    mutationCount++;
+                }
+            }
+            Console.WriteLine($" Muted {mutationCount} individuals with a {mutationRate} rate");
 
             //        float bestScore = SumAround(brut, width, height, population[0].Item1, population[0].Item2);
             //        Console.WriteLine($" Best population score is : {bestScore}");
