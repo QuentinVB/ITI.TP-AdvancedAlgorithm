@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP3.Firestation", "TP3.Firestation\TP3.Firestation.csproj", "{250B078D-43D5-4E7E-B883-F378DE0B5ADC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{250B078D-43D5-4E7E-B883-F378DE0B5ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{250B078D-43D5-4E7E-B883-F378DE0B5ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{250B078D-43D5-4E7E-B883-F378DE0B5ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{250B078D-43D5-4E7E-B883-F378DE0B5ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBF10DC5-8322-4B16-A683-846EA87443C7}
+	EndGlobalSection
+EndGlobal
