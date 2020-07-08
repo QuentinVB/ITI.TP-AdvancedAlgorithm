@@ -46,7 +46,7 @@ namespace TP3.Firestation
 
             int maxIterations = 20;
 
-            double mutationRate = 0.25;
+            double mutationRate = 0.10;
             int populationBreed = 50;
 
 
@@ -63,22 +63,7 @@ namespace TP3.Firestation
             do
             {
                 Console.WriteLine($"Begin iteration {interations}");
-                //mutate population
-                int mutationCount = 0;
-
-                for (int i = 0; i < population.Count; i++)
-                {
-                    if (rnd.NextDouble() < mutationRate)
-                    {
-                        //mutate item1 
-                        population[i] = (
-                            (rnd.NextDouble() < 0.5) ? (int)Math.Floor(rnd.NextDouble() * width) : population[i].Item1,
-                            (rnd.NextDouble() < 0.5) ? (int)Math.Floor(rnd.NextDouble() * width) : population[i].Item2
-                            );
-                        mutationCount++;
-                    }
-                }
-                Console.WriteLine($" Muted {mutationCount} individuals with a {mutationRate} rate");
+                
 
 
                 //breed population
@@ -131,6 +116,23 @@ namespace TP3.Firestation
                 {
                     population.Add(((int)Math.Floor(rnd.NextDouble() * width), (int)Math.Floor(rnd.NextDouble() * height)));
                 }
+
+                //mutate population
+                int mutationCount = 0;
+
+                for (int i = 0; i < population.Count; i++)
+                {
+                    if (rnd.NextDouble() < mutationRate)
+                    {
+                        //mutate item1 
+                        population[i] = (
+                            (rnd.NextDouble() < 0.5) ? (int)Math.Floor(rnd.NextDouble() * width) : population[i].Item1,
+                            (rnd.NextDouble() < 0.5) ? (int)Math.Floor(rnd.NextDouble() * width) : population[i].Item2
+                            );
+                        mutationCount++;
+                    }
+                }
+                Console.WriteLine($" Muted {mutationCount} individuals with a {mutationRate} rate");
 
                 float bestScore = SumAround(brut, width, height, population[0].Item1, population[0].Item2);
                 Console.WriteLine($" Best population score is : {bestScore}");

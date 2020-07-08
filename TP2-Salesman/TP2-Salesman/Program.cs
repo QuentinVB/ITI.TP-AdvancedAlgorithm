@@ -13,6 +13,18 @@ namespace TP2_Salesman
             List<Airport> airport = CsvLoader<Airport>.LoadCSV("airports.txt").ToList();
             List<Travel> travel = CsvLoader<Travel>.LoadCSV("small-schedule.txt",",").ToList();
 
+            //Test
+            
+
+            //Recueillir airport departure et arrival
+            
+
+            //Durée des voyages et escales
+
+            //Somme des prix des escales
+
+
+
             Console.ReadLine();
         }
     }

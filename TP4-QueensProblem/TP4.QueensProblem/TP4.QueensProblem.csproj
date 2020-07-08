@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2AC90249-FA23-478C-AC88-777C4BD6A50D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TP3_</RootNamespace>
-    <AssemblyName>TP3-</AssemblyName>
+    <RootNamespace>TP4_</RootNamespace>
+    <AssemblyName>TP4.QueensProblem</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
