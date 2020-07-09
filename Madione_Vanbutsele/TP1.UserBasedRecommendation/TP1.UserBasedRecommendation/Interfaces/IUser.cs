@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ITI.TP_UserBasedRecommendation
 {
-    class DataAccessLibrary
+    public interface IUser
     {
-        
+        int Id { get; set; }
+
+        List<IData> Scores { get; set; }
     }
 }
