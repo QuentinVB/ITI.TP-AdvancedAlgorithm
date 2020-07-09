@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2-Salesman", "TP2-Salesman\TP2-Salesman.csproj", "{A2060A29-423A-4CA6-A72B-4BBA5E0C2C7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2.AirportProblem", "TP2.AirportProblem\TP2.AirportProblem.csproj", "{A2060A29-423A-4CA6-A72B-4BBA5E0C2C7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

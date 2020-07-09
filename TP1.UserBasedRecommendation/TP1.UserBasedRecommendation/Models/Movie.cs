@@ -35,5 +35,16 @@ namespace ITI.TP_UserBasedRecommendation
         public int Thriller { get; set; }
         public int War { get; set; }
         public int Western { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Movie movie &&
+                   Id == movie.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return 2108858624 + Id.GetHashCode();
+        }
     }
 }

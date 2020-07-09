@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITI.TP-UserBasedRecommendation", "ITI.TP-UserBasedRecommendation\ITI.TP-UserBasedRecommendation.csproj", "{C8B6B396-ADD5-4DE0-B6AA-A7A0EC2FBF8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP1.UserBasedRecommendation", "TP1.UserBasedRecommendation\TP1.UserBasedRecommendation.csproj", "{C8B6B396-ADD5-4DE0-B6AA-A7A0EC2FBF8B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{581FB38A-4143-4D5E-9780-9746E49B9F90}"
 	ProjectSection(SolutionItems) = preProject

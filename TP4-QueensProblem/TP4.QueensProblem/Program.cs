@@ -143,14 +143,13 @@ namespace TP4.QueensProblem
                 if (rnd.NextDouble() < mutationRate)
                 {
                     //mutate the Queen position 
-                    var futurMutant = tempPopulation[i];
                     List<(int, int)> queens = new List<(int, int)>();
 
-                    for (int j = 0; j < futurMutant.GetLength(0); j++)
+                    for (int j = 0; j < tempPopulation[i].GetLength(0); j++)
                     {
-                        for (int k = 0; k < futurMutant.GetLength(1); k++)
+                        for (int k = 0; k < tempPopulation[i].GetLength(1); k++)
                         {
-                            if (futurMutant[j, k])
+                            if (tempPopulation[i][j, k])
                             {
                                 queens.Add((j, k));
                                 if (queens.Count == 8) break;
@@ -160,16 +159,16 @@ namespace TP4.QueensProblem
                     }
                     var rndQueen = queens[rnd.Next(0, 8)];
 
-                    futurMutant[rndQueen.Item1, rndQueen.Item2] = false;
+                    tempPopulation[i][rndQueen.Item1, rndQueen.Item2] = false;
                     int x = rnd.Next(0, width);
                     int y = rnd.Next(0, height);
 
-                    while(futurMutant[x,y])
+                    while (tempPopulation[i][x,y])
                     {
                         x = rnd.Next(0, width);
                         y = rnd.Next(0, height);
                     }
-                    futurMutant[x, y] = true;
+                    tempPopulation[i][x, y] = true;
                     mutationCount++;
                 }
             }
