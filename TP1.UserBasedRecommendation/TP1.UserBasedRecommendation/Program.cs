@@ -9,6 +9,7 @@ namespace ITI.TP_UserBasedRecommendation
 {
     class Program
     {
+        static long averageUserTime = 0;
         static void Main(string[] args)
         {
             //CONFIG
@@ -17,11 +18,16 @@ namespace ITI.TP_UserBasedRecommendation
 
 
             Console.WriteLine("Loading data and initialization, it may take a while...");
-
+            //load files
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             Dictionary<int, User> users = CsvLoader<User>.LoadCSV("u.user").ToDictionary(p=>p.Id);
             Dictionary<int, Movie> movies = CsvLoader<Movie>.LoadCSV("u.item").ToDictionary(p => p.Id);
             List<Score> scores = CsvLoader<Score>.LoadCSV("u.data").ToList();
+            watch.Stop();
+            Console.WriteLine($"1/3 : File loaded in {watch.ElapsedMilliseconds}ms !");
 
+            //link relations
+            watch = System.Diagnostics.Stopwatch.StartNew();
             foreach (Score score in scores)
             {
                 if(movies.TryGetValue(score.ItemId, out Movie movie))
@@ -34,10 +40,16 @@ namespace ITI.TP_UserBasedRecommendation
                     user.Scores.Add(score);
                 }
             }
+            watch.Stop();
+            Console.WriteLine($"2/3 : Data linked in {watch.ElapsedMilliseconds}ms !");
 
+            //compute similarity matrix
+            watch = System.Diagnostics.Stopwatch.StartNew();
             users = ComputeSimilarityMatrix(users, movies.Count);
-
-            Console.WriteLine("Loaded !");
+            watch.Stop();
+            Console.WriteLine($"3/3 : Similarity matrixes computed in {watch.ElapsedMilliseconds}ms !");
+            Console.WriteLine($"Averge time per user : {Program.averageUserTime}");
+            Console.WriteLine("Loaded !\n");
 
             //user input his user id
             bool validUser = false;
@@ -57,7 +69,8 @@ namespace ITI.TP_UserBasedRecommendation
                 if(validUser == false) Console.WriteLine("This user does not exist");
             }
             Console.WriteLine($"Selected user {userId} ; we are searching the top {MAXMOVIE} best movies for you !");
-            Console.WriteLine($"Computing");
+            Console.WriteLine($"Computing...\n");
+            watch = System.Diagnostics.Stopwatch.StartNew();
 
             //TODO : define similar user properly (ratio ? userinput ?)
             var bestsUsersForTheGivenUser = activeUser.Similarity.GetRange(1, MAXSIMILARUSERS + 1);
@@ -125,15 +138,18 @@ namespace ITI.TP_UserBasedRecommendation
 
             //Recommendation : item based model
 
-            
+            watch.Stop();
+            Console.WriteLine($"Computed in {watch.ElapsedMilliseconds}ms !");
             Console.ReadKey();
             
         }
-
+        //TODO : improve speed here
         private static Dictionary<int, User> ComputeSimilarityMatrix(Dictionary<int, User> users, int movieCount)
         {
+            
             foreach (var user in users.Values)
             {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
                 foreach (var userTarget in users.Values)
                 {                   
                     var similarity = GetCosineSimilarity(user, userTarget, movieCount);
@@ -149,11 +165,15 @@ namespace ITI.TP_UserBasedRecommendation
                     //> 0 : UserB is better
                     return (int)(UserA.Item2 - UserB.Item2);
                 });
+                watch.Stop();
+                Program.averageUserTime += watch.ElapsedMilliseconds;
             }
-            
+
+            Program.averageUserTime /= users.Count();
 
             return users;
         }
+        //TODO : improve speed here
         public static float GetCosineSimilarity(User userA, User userB, int movieCount)
         {
             if (userA.Id == userB.Id) return 1.0f;
